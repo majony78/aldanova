@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AldaNova — Digitalización y Automatizaciones</title>
+
+  <!-- Bootstrap 4 (CDN correcto y simple) -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+  <style>
+    :root{
+      --brand:#1A2836;       /* azul oscuro sobrio */
+      --accent:#3BA3FF;      /* acento moderno */
+      --muted:#6B7B89;
+      --light:#F7F9FB;
+      --border:#E6EEF5;
+      --ok:#17c964;
+    }
+    html,body{height:100%;}
+    body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--brand);background:#fff;}
+
+    /* NAVBAR */
+    .navbar{ border-bottom:1px solid var(--border); }
+    .navbar .nav-link{ color:var(--brand); font-weight:600; }
+    .navbar .nav-link:hover{ color:var(--accent); text-decoration:none; }
+    .navbar .btn{ font-weight:700; border-radius:12px; }
+    .btn-primary{ background:var(--brand); border-color:var(--brand); }
+    .btn-outline{ border:1px solid var(--brand); color:var(--brand); }
+    .btn-outline:hover{ background:var(--brand); color:#fff; }
+
+    .brand-mark{ display:flex; align-items:center; font-weight:800; letter-spacing:.3px; color:var(--brand); }
+    .brand-icon{ width:28px; height:28px; margin-right:10px; }
+    .brand-icon svg{ width:100%; height:100%; fill:var(--brand); }
+
+    /* HERO */
+    .hero{ padding:96px 0 72px; background:linear-gradient(180deg,#fff 0%,#fafcfe 100%); }
+    .hero h1{ font-weight:900; line-height:1.1; letter-spacing:.2px; }
+    .hero-lead{ font-size:1.12rem; color:#314556; max-width:820px; }
+    .pill{ display:inline-flex; align-items:center; padding:6px 12px; border-radius:999px; background:#EEF6FF; color:#144477; font-weight:700; font-size:.9rem; }
+
+    /* SLOTS PARA IMÁGENES/VIDEO */
+    .img-slot{
+      width:100%; min-height:220px; border:2px dashed var(--border); border-radius:16px;
+      display:flex; align-items:center; justify-content:center; color:var(--muted); font-weight:600;
+      transition:border-color .2s ease, box-shadow .2s ease;
+      background:#fff;
+    }
+    .img-slot:hover{ border-color:#c7dbea; box-shadow:0 6px 22px rgba(26,40,54,.06); }
+    .slot-tall{ min-height:360px; }
+    .slot-wide{ min-height:280px; }
+
+    /* SECCIONES */
+    .section{ padding:72px 0; }
+    .section-title{ font-weight:900; letter-spacing:.2px; }
+    .section-sub{ color:#42586A; max-width:780px; margin:0 auto 36px; }
+
+    /* FEATURES */
+    .feature{
+      background:#fff; border:1px solid var(--border); border-radius:16px; padding:22px; height:100%;
+      transition: box-shadow .2s ease, transform .15s ease;
+    }
+    .feature:hover{ box-shadow:0 10px 26px rgba(26,40,54,.08); transform:translateY(-2px); }
+    .badge-soft{ background:#E9F6EE; color:#0B6B3A; border-radius:999px; padding:.3rem .6rem; font-weight:800; font-size:.72rem; }
+
+    .integrations-badge{
+      display:inline-flex; align-items:center; padding:.45rem .7rem; border:1px solid var(--border);
+      border-radius:999px; margin:.25rem; background:#fff; font-weight:700; color:#193344; font-size:.85rem;
+    }
+
+    /* CTA */
+    .cta{ background:#FBFDFF; border-top:1px solid var(--border); }
+    .cta .card{ border:1px solid var(--border); border-radius:18px; }
+
+    footer{ color:#6b7b89; font-size:.92rem; border-top:1px solid var(--border); padding:28px 0; }
+ 
+.brand-icon img {
+  max-height: 32px; 
+  width: auto;
+}
+
+/* fija el alto de la barra */
+.navbar {
+  height: 64px; /* o el alto que quieras */
+  display: flex;
+  align-items: center;
+}
+
+/* limita el alto del logo */
+.logo-navbar {
+  max-height: 140px; /* alto máximo del logo */
+  width: auto;
+}
+
+ 
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+  <div class="container">
+    <!-- Logo fuera del span -->
+    <a class="navbar-brand" href="#">
+      <img src="AldaNovaLogo.png" alt="Logo AldaNova" class="logo-navbar">
+    </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navlinks" aria-controls="navlinks" aria-expanded="false" aria-label="Menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div id="navlinks" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="#como-funciona">Cómo funciona</a></li>
+          <li class="nav-item"><a class="nav-link" href="#integraciones">Integraciones</a></li>
+          <li class="nav-item"><a class="nav-link" href="#casos">Casos de uso</a></li>
+          <li class="nav-item"><a class="btn btn-sm btn-primary ml-lg-3" href="#contacto">Solicitar demo</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <span class="pill mb-3">Digitalización · Automatizaciones · Chat conectado</span>
+          <h1 class="display-4 mb-3">Tu empresa, <span style="color:var(--accent)">conectada a una sola conversación</span></h1>
+          <p class="hero-lead mb-4">
+            AldaNova unifica tus sistemas —ERPs, CRMs y herramientas internas— detrás de un chat profesional.
+            Pide <em>cualquier</em> dato, ejecuta tareas y dispara flujos en tiempo real: desde informes hasta altas de clientes.
+            Orquestamos automatizaciones robustas con <strong>n8n</strong> y conectores listos para <strong>Salesforce</strong>, <strong>Odoo</strong> y los principales ERPs del mercado.
+          </p>
+          <div class="hero-cta">
+            <a href="#contacto" class="btn btn-primary mr-2">Probar demo</a>
+            <a href="#como-funciona" class="btn btn-outline">Ver cómo funciona</a>
+          </div>
+          <ul class="list-unstyled mt-4 text-muted">
+            <li>✔︎ Seguridad y trazabilidad por entorno</li>
+            <li>✔︎ Despliegue en semanas, no meses</li>
+            <li>✔︎ Arquitectura modular, sin ataduras</li>
+          </ul>
+        </div>
+       <div class="col-lg-6 mt-5 mt-lg-0">
+  <video autoplay muted loop playsinline class="w-100 rounded" style="min-height:360px;object-fit:cover;">
+    <source src="aldanova_video_final.mp4" type="video/mp4">
+    Tu navegador no soporta vídeo HTML5.
+  </video>
+</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HIGHLIGHTS VISUALES -->
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4"><div class="img-slot">
+          <img src="image_aldanova7.png" alt="Imagen 1 — Moderna" width="800" height="600" class="img-fluid">
+        </div></div>
+        <div class="col-md-4 mb-4"><div class="img-slot">
+          <img src="image_aldanova4.png" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
+        </div></div>
+        <div class="col-md-4 mb-4"><div class="img-slot">
+          <img src="image_aldanova3.png" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid"> 
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO FUNCIONA -->
+  <section class="section" id="como-funciona">
+    <div class="container text-center">
+      <h2 class="section-title">Cómo funciona</h2>
+      <p class="section-sub">
+        Conectamos tus fuentes de datos y procesos a un <strong>chat corporativo</strong> con permisos y trazabilidad.
+        Pides algo → el asistente entiende la intención → ejecuta automatizaciones en n8n →
+        consulta/actualiza tu ERP o CRM → devuelve el resultado validado.
+      </p>
+      <div class="row mt-4">
+        <div class="col-md-4 mb-4">
+          <div class="feature text-left">
+            <span class="badge-soft mb-2">1 · Conecta</span>
+            <h5>Plug-ins a tus sistemas</h5>
+            <p class="mb-3 text-muted">Salesforce, Odoo, SAP B1, HubSpot, Zoho, SQL/NoSQL y APIs internas. Roles, scopes y auditoría.</p>
+            <div class="img-slot">
+               <img src="image_aldanova10.png" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="feature text-left">
+            <span class="badge-soft mb-2">2 · Orquesta</span>
+            <h5>Automatizaciones en n8n</h5>
+            <p class="mb-3 text-muted">Workflows versionados, QA por entorno y monitorización. Disparos por chat, eventos o cron.</p>
+            <div class="img-slot">
+             <img src="image_aldanova11.png" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="feature text-left">
+            <span class="badge-soft mb-2">3 · Conversa</span>
+            <h5>Chat que ejecuta y responde</h5>
+            <p class="mb-3 text-muted">Pide KPIs, crea órdenes, actualiza oportunidades o lanza campañas. Todo en la misma conversación.</p>
+            <div class="img-slot">
+               <img src="image_aldanova12.jpg" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRACIONES -->
+  <section class="section" id="integraciones">
+    <div class="container text-center">
+      <h2 class="section-title">Integraciones listas</h2>
+      <p class="section-sub">Añade o quita conectores sin rehacer nada. Si no existe, lo construimos sobre tu API.</p>
+
+      <div class="d-flex flex-wrap justify-content-center mt-2">
+        <span class="integrations-badge">Salesforce</span>
+        <span class="integrations-badge">Odoo</span>
+        <span class="integrations-badge">SAP B1</span>
+        <span class="integrations-badge">HubSpot</span>
+        <span class="integrations-badge">Zoho</span>
+        <span class="integrations-badge">PostgreSQL</span>
+        <span class="integrations-badge">MySQL</span>
+        <span class="integrations-badge">MongoDB</span>
+        <span class="integrations-badge">REST / GraphQL</span>
+        <span class="integrations-badge">n8n</span>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-3 mb-3"><div class="img-slot">
+           <img src="HubSpot-Logo-PNG-600x173.png" alt="Logo Hubspot" width="800" height="600" class="img-fluid">
+        </div></div>
+        <div class="col-md-3 mb-3"><div class="img-slot">
+           <img src="postgresql.png" alt="Logo Postgres" width="800" height="600" class="img-fluid">
+        </div></div>
+        <div class="col-md-3 mb-3"><div class="img-slot">
+           <img src="salesforce.png" alt="Logo Salesforce" width="800" height="600" class="img-fluid">
+        </div></div>
+        <div class="col-md-3 mb-3"><div class="img-slot">
+           <img src="n8n.png" alt="Logo n8n" width="800" height="600" class="img-fluid">
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASOS DE USO -->
+  <section class="section" id="casos">
+    <div class="container">
+      <h2 class="section-title text-center">Casos de uso reales</h2>
+      <p class="section-sub text-center">Tres ejemplos donde AldaNova ahorra horas y errores.</p>
+
+      <div class="row mt-4">
+        <div class="col-md-4 mb-4">
+          <div class="feature">
+            <h5>Operaciones ⇄ ERP</h5>
+            <ul class="mt-3 mb-0">
+              <li>✔︎ Crear/actualizar pedidos desde chat</li>
+              <li>✔︎ Stock y albaranes en tiempo real</li>
+              <li>✔︎ Alertas automáticas por umbrales</li>
+            </ul>
+            <div class="img-slot slot-wide mt-3">
+               <img src="image_aldanova13.jpg" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="feature">
+            <h5>Ventas ⇄ CRM</h5>
+            <ul class="mt-3 mb-0">
+              <li>✔︎ Oportunidades y actividades por voz/chat</li>
+              <li>✔︎ Prospección asistida y scoring</li>
+              <li>✔︎ Resúmenes de pipeline al instante</li>
+            </ul>
+            <div class="img-slot slot-wide mt-3">
+               <img src="image_aldanova14.jpg" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="feature">
+            <h5>Backoffice ⇄ Automatizaciones</h5>
+            <ul class="mt-3 mb-0">
+              <li>✔︎ Facturas y conciliaciones automáticas</li>
+              <li>✔︎ Notificaciones a equipos y clientes</li>
+              <li>✔︎ ETL ligero entre sistemas</li>
+            </ul>
+            <div class="img-slot slot-wide mt-3">
+               <img src="image_aldanova15.jpg" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="section" id="galeria">
+    <div class="container">
+      <h2 class="section-title text-center">Galería</h2>
+      <p class="section-sub text-center">Capturas, Mockups, Equipo</p>
+      <div class="row">
+        <div class="col-md-6 mb-4"><div class="img-slot slot-tall">
+           <img src="image_aldanova5.png" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
+        </div></div>
+        <div class="col-md-6 mb-4"><div class="img-slot slot-tall">
+           <img src="image_aldanova6.png" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
+        </div></div>
+        <div class="col-md-4 mb-4"><div class="img-slot">
+           <img src="image_aldanova9.png" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
+        </div></div>
+        <div class="col-md-4 mb-4"><div class="img-slot">
+           <img src="image_aldanova8.png" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
+        </div></div>
+        <div class="col-md-4 mb-4"><div class="img-slot">
+           <img src="image_aldanova1.png" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta" id="contacto">
+    <div class="container">
+      <div class="card p-4 p-md-5">
+        <div class="row align-items-center">
+          <div class="col-md-7">
+            <h3 class="mb-2">Listo para hablar con tus sistemas</h3>
+            <p class="text-muted mb-0">Agenda una demo y te montamos un flujo real (n8n) contra tu ERP/CRM en días.</p>
+          </div>
+          <div class="col-md-5 mt-3 mt-md-0 text-md-right">
+            <a href="#" class="btn btn-primary btn-lg">Solicitar demo</a>
+            <a href="#" class="btn btn-outline btn-lg ml-2">Ver documentación</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+      <div>© <span id="year"></span> AldaNova. Todos los derechos reservados.</div>
+      <div class="text-muted">Legal · Privacidad · Seguridad</div>
+    </div>
+  </footer>
+
+  <!-- JS (jQuery + Bootstrap Bundle con Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+ <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
