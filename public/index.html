@@ -208,25 +208,55 @@ footer{ color:#6b7b89; font-size:.92rem; border-top:1px solid var(--border); pad
     z-index: 999; /* por encima del overlay */
   }
 }
- 
- /* >>> BLOQUE NUEVO PARA ALTURA EN MÓVIL <<< */
+
+
+/* === Móvil: subir logo + hamburguesa sin romper el menú === */
 @media (max-width: 991.98px) {
   .navbar {
-    height: 64px;            /* sigue fija */
+    height: 64px;
     padding-top: 0;
     padding-bottom: 0;
   }
+
+  /* deja el contenedor sin transform (anula lo anterior) */
+  .navbar > .container { transform: none !important; }
+
+  /* agranda visualmente el logo sin cambiar altura real */
   .logo-navbar {
-    max-height: 80px;         /* sigue siendo 40px reales */
-    transform: scale(1.4);    /* lo ves 40% más grande */
-    transform-origin: left center; /* que crezca desde la izquierda */
+    max-height: 80px;
+    transform: scale(1.4);
+    transform-origin: left center;
   }
-  
-    /* sube logo + botón a la vez */
-  .navbar .container {
-    display: flex;
-    align-items: center;
-    transform: translateY(-11px); /* súbelo 4px, ajusta al gusto */
+
+  /* sube SOLO el logo y el botón, no el colapso */
+  .navbar .navbar-brand,
+  .navbar .navbar-toggler {
+    position: relative;
+    top: -11px;              /* ajusta -8/-12px a tu gusto */
+  }
+
+  /* el menú desplegable queda normal */
+  .navbar-collapse { transform: none !important; margin-top: .25rem; }
+}
+
+ /* === SOLO redondear menú colapsado y hover en links === */
+@media (max-width: 991.98px) {
+  /* contenedor del menú desplegado */
+  .navbar-collapse {
+    border-radius: 12px;               /* esquinas redondeadas */
+    box-shadow: 0 4px 14px rgba(0,0,0,.08); /* sombra opcional */
+  }
+
+  /* enlaces del menú */
+  .navbar-nav .nav-link {
+    border-radius: 8px; 
+    transition: background-color .2s ease, color .2s ease;
+  }
+
+  .navbar-nav .nav-link:hover {
+    background-color: rgba(59,163,255,0.08); /* azul clarito */
+    color: var(--accent);
+    text-decoration: none;
   }
 }
  
