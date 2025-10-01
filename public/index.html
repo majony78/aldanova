@@ -209,13 +209,36 @@ footer{ color:#6b7b89; font-size:.92rem; border-top:1px solid var(--border); pad
   }
 }
  
+ /* >>> BLOQUE NUEVO PARA ALTURA EN MÓVIL <<< */
+@media (max-width: 991.98px) {
+  .navbar {
+    height: 64px;            /* sigue fija */
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .logo-navbar {
+    max-height: 80px;         /* sigue siendo 40px reales */
+    transform: scale(1.4);    /* lo ves 40% más grande */
+    transform-origin: left center; /* que crezca desde la izquierda */
+  }
+  
+    /* sube logo + botón a la vez */
+  .navbar .container {
+    display: flex;
+    align-items: center;
+    transform: translateY(-11px); /* súbelo 4px, ajusta al gusto */
+  }
+}
+ 
+ 
+ 
   </style>
 </head>
 <body>
 
   <!-- NAV -->
  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
-  <div class="container">
+  <div class="container  d-flex justify-content-between align-items-center">
     <!-- Logo fuera del span -->
     <a class="navbar-brand" href="#">
       <img src="AldaNovaLogo.png" alt="Logo AldaNova" class="logo-navbar">
