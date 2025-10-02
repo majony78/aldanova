@@ -395,6 +395,112 @@ footer{ color:#6b7b89; font-size:.92rem; border-top:1px solid var(--border); pad
   }
 }
 
+/* ===== FIXES FINALES SIN ROMPER NADA EXISTENTE ===== */
+
+/* 1) Desktop: mantiene tu animación permanente del logo (hue) */
+.logo-navbar{
+  animation: hue 10s linear infinite; /* se respeta tu keyframes hue */
+  backface-visibility: hidden;
+}
+
+/* 2) MÓVIL: sin deformaciones, animación activa y overlay intacto */
+@media (max-width: 991.98px){
+
+  /* Mantén el overlay de opacidad cuando se abre el menú (por si alguna regla lo pisa) */
+  body.menu-open::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background: rgba(0,0,0,0.4);
+    z-index: 998;
+  }
+  .navbar-collapse{ position:relative; z-index:999; }
+
+  /* Quita borde de la navbar en móvil (lo pediste así) */
+  .navbar{ border-bottom: none !important; }
+
+  /* Quita cualquier desplazamiento raro en marca y hamburguesa */
+  .navbar .navbar-brand,
+  .navbar .navbar-toggler{
+    position: relative;
+    top: 0 !important;         /* anula -11px */
+    margin-top: 6px;           /* ajusta si quieres 4–10px */
+  }
+
+  /* Logo: tamaño correcto, sin scale, sin moverse, con color cambiando */
+  .logo-navbar{
+    height: 44px;              /* alto visible coherente en móvil */
+    width: auto;
+    max-height: none;
+    transform: none !important;            /* anula scale(1.4) */
+    transform-origin: center center !important;
+    object-fit: contain;
+    object-position: center;
+      border: none !important;
+    box-shadow: none !important;
+    background: transparent !important; /* por si tenía fondo */
+    filter: none; /* si no quieres ningún halo extra */
+
+    /* MUY IMPORTANTE: reactivamos la animación en móvil y más lenta */
+    animation: hue 14s linear infinite !important;
+    /* no tocamos box-shadow; el halo lo genera el filter del keyframes */
+  }
+
+  /* El recorte del contenedor del logo, más compacto en móvil */
+  .logo-crop{
+  border: none !important;
+    box-shadow: none !important;
+    width: 140px;              /* algo más estrecho en móvil */
+    height: 48px;              /* mismo “viewport” sin deformar */
+    overflow: hidden;
+  }
+  .logo-crop img{
+    transform: translateY(-12px);   /* centra el recorte en móvil */
+  }
+}
+
+
+
+/* 3) Imágenes con overlay: mantenemos opacidad y transición tal cual */
+/* (no cambiamos nada aquí para no romper tu efecto actual) */
+
+/* 4) Imagen “extra-slot” (logos_juntos_con_recuadro.png) sigue con hologram en hover */
+/* (no cambiamos tu comportamiento actual) */
+
+@media (max-width: 991.98px) {
+  .logo-crop{
+    border:none !important;
+    box-shadow:none !important;
+    overflow:hidden;
+    border-radius:0; /* quita redondeo */
+    width:140px;  /* ajusta */
+    height:40px;  /* ajusta */
+  }
+
+  .logo-crop img {
+    border:none !important;
+    box-shadow:none !important;
+    transform:translateY(-4px) scale(1.1); /* “zoom” para que el borde se salga del recorte */
+    clip-path: inset(2px); /* recorta 2px de cada lado */
+  }
+}
+@media (max-width: 991.98px) {
+
+  /* resetea transform para que se vea completa la imagen */
+  .logo-crop img {
+    transform: none !important;
+  }
+
+  /* sube el bloque entero del logo (link + imagen) */
+  .navbar .navbar-brand {
+    margin-top: -8px; /* ajusta -8, -10, -12 a tu gusto */
+  }
+
+  /* si quieres más alto visible en móvil */
+  .logo-crop {
+    height: 70px; /* más espacio para que no se corte */
+  }
+}
 
 
 
