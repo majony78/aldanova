@@ -502,6 +502,140 @@ footer{ color:#6b7b89; font-size:.92rem; border-top:1px solid var(--border); pad
   }
 }
 
+.integrations-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: .45rem .7rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  margin: .25rem;
+  background: #fff;
+  font-weight: 700;
+  color: #193344;
+  font-size: .85rem;
+  transition: all .3s ease;
+  cursor: default;
+}
+
+/* Colores de hover para cada integración */
+.integrations-badge:hover:nth-child(1) { /* Salesforce */
+  background-color: #0070d2;
+  color: #fff;
+  border-color: #0070d2;
+}
+
+.integrations-badge:hover:nth-child(2) { /* Odoo */
+  background-color: #875A7B;
+  color: #fff;
+  border-color: #875A7B;
+}
+
+.integrations-badge:hover:nth-child(3) { /* SAP B1 */
+  background-color: #F2C811; /* claro */
+  color: #193344; /* texto oscuro */
+  border-color: #F2C811;
+}
+
+.integrations-badge:hover:nth-child(4) { /* HubSpot */
+  background-color: #FF7A59;
+  color: #fff;
+  border-color: #FF7A59;
+}
+
+.integrations-badge:hover:nth-child(5) { /* Zoho */
+  background-color: #009688;
+  color: #fff;
+  border-color: #009688;
+}
+
+.integrations-badge:hover:nth-child(6) { /* PostgreSQL */
+  background-color: #336791;
+  color: #fff;
+  border-color: #336791;
+}
+
+.integrations-badge:hover:nth-child(7) { /* Microsoft */
+  background-color: #737373; /* gris medio */
+  color: #fff;
+  border-color: #737373;
+}
+
+.integrations-badge:hover:nth-child(8) { /* MongoDB */
+  background-color: #47A248;
+  color: #fff;
+  border-color: #47A248;
+}
+
+.integrations-badge:hover:nth-child(9) { /* REST / GraphQL */
+  background-color: #E535AB; /* GraphQL rosa */
+  color: #fff;
+  border-color: #E535AB;
+}
+
+.integrations-badge:hover:nth-child(10) { /* n8n */
+  background-color: #F05A28; /* naranja n8n */
+  color: #fff;
+  border-color: #F05A28;
+}
+
+
+
+body {
+  /* Fondo inicial fijo - elimina el degradado inicial problemático */
+  background: #ffffff !important;
+  transition: background .2s ease;
+  position: relative;
+}
+
+/* Crea un pseudo-elemento para el degradado dinámico */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Detrás de todo el contenido */
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    var(--scroll-color, #f7f9fb) 100%
+  );
+  transition: background .2s ease;
+}
+
+/* Asegura que las secciones tengan fondo transparente para ver el degradado */
+.section, .hero, .cta, footer {
+  background: transparent;
+}
+
+/* El CTA debe mantener su fondo específico */
+.cta {
+  background: #FBFDFF !important;
+  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+}
+
+.section h2,
+.section p {
+  color: var(--brand); /* tu color normal arriba */
+  text-shadow: none;
+  transition: color 1.2s ease, text-shadow 1.2s ease; /* animación más lenta */
+}
+
+body.scrolled-dark .section h2,
+body.scrolled-dark .section p {
+  color: #fff;
+  text-shadow: 0 0 6px rgba(0,0,0,0.4);
+}
+
+
+/* pero a este en concreto no */
+.no-shadow {
+  color: var(--brand) !important; /* o el color que uses normalmente */
+  text-shadow: none !important;
+}
 
 
 
@@ -810,7 +944,11 @@ footer{ color:#6b7b89; font-size:.92rem; border-top:1px solid var(--border); pad
         <div class="row align-items-center">
           <div class="col-md-7">
             <h3 class="mb-2">Listo para hablar con tus sistemas</h3>
-            <p class="text-muted mb-0">Agenda una demo y te montamos un flujo real (n8n) contra tu ERP/CRM en días.</p>
+            <p class="text-muted mb-0">
+<p class="no-shadow">
+  Agenda una demo y te montamos un flujo real (n8n) contra tu ERP/CRM en días.
+</p>
+</p>
           </div>
           <div class="col-md-5 mt-3 mt-md-0 text-md-right">
             <a href="#" class="btn btn-primary btn-lg">Solicitar demo</a>
@@ -861,6 +999,57 @@ footer{ color:#6b7b89; font-size:.92rem; border-top:1px solid var(--border); pad
       if (window.innerWidth > 992) $('body').removeClass('menu-open');
     });
   });
+  
+  
+  window.addEventListener('scroll', () => {
+	    // altura actual y total del documento
+	    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+	    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+	    const scrollPercent = Math.min(scrollTop / docHeight, 1);
+
+	    // color inicial (gris claro) y final (azul oscuro)
+	    const startColor = [247, 249, 251]; // #f7f9fb
+	    const endColor   = [26, 40, 54];    // #1A2836
+
+	    // interpolamos RGB
+	    const r = Math.round(startColor[0] + (endColor[0] - startColor[0]) * scrollPercent);
+	    const g = Math.round(startColor[1] + (endColor[1] - startColor[1]) * scrollPercent);
+	    const b = Math.round(startColor[2] + (endColor[2] - startColor[2]) * scrollPercent);
+
+	    document.body.style.setProperty('--scroll-color', `rgb(${r},${g},${b})`);
+	  });
+  
+  
+  window.addEventListener('scroll', () => {
+	  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+	  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+	  const scrollPercent = Math.min(scrollTop / docHeight, 1);
+
+	  // color inicial del texto (oscuro) y final (blanco)
+	  const startColor = [26, 40, 54]; // azul oscuro de tu var(--brand)
+	  const endColor   = [255, 255, 255]; // blanco
+
+	  const r = Math.round(startColor[0] + (endColor[0] - startColor[0]) * scrollPercent);
+	  const g = Math.round(startColor[1] + (endColor[1] - startColor[1]) * scrollPercent);
+	  const b = Math.round(startColor[2] + (endColor[2] - startColor[2]) * scrollPercent);
+
+	  document.documentElement.style.setProperty('--scroll-text', `rgb(${r},${g},${b})`);
+	}); 
+ 
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    // empieza a cambiar a partir de 900px (ajústalo a gusto)
+    const trigger = 1400;
+
+    if(scrollTop > trigger){
+      document.body.classList.add('scrolled-dark');
+    } else {
+      document.body.classList.remove('scrolled-dark');
+    }
+  });
+
+
   
   </script>
 </body>
