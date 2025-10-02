@@ -161,7 +161,7 @@ footer{ color:#6b7b89; font-size:.92rem; border-top:1px solid var(--border); pad
 
 /* limita el alto del logo */
 .logo-navbar {
-  max-height:140px; /* altura original */
+  max-height:110px; /* altura original */
   width:auto;
 }
 
@@ -334,6 +334,71 @@ footer{ color:#6b7b89; font-size:.92rem; border-top:1px solid var(--border); pad
   box-shadow: 0 0 30px rgba(59,163,255,.5);
 }
 
+
+
+.logo-crop {
+  width: 160px;          /* ancho que quieras */
+  height: 60px;          /* altura visible (corta arriba y abajo) */
+  overflow: hidden;      /* oculta el resto */
+}
+
+.logo-crop img {
+  width: 100%;
+  height: auto;          /* mantiene proporción */
+  display: block;
+  /* puedes mover verticalmente para ajustar el “recorte” */
+  transform: translateY(-20px); /* sube 10px para cortar más abajo */
+}
+
+@keyframes hue {
+  0% {
+    filter: hue-rotate(0deg) drop-shadow(0 0 10px rgba(59,163,255,0.4));
+  }
+  100% {
+    filter: hue-rotate(360deg) drop-shadow(0 0 20px rgba(59,163,255,0.6));
+  }
+}
+
+/* el logo siempre animado */
+.logo-navbar {
+  display: inline-block;
+  animation: hue 10s linear infinite; /* <<< duración lenta */
+  backface-visibility: hidden;
+}
+
+/* SOLO para móviles */
+@media (max-width: 991.98px) {
+
+  /* quita bordes del logo en móvil */
+  .logo-navbar {
+    box-shadow: none !important; /* quita halo si quieres */
+    border: none !important;     /* quita borde */
+    animation: none !important;  /* si no quieres animación en móvil */
+  }
+
+  /* baja el logo dentro de la barra */
+  .navbar .navbar-brand {
+    position: relative;
+    top: 0; /* resetea cualquier top negativo */
+    margin-top: 8px; /* ajusta este valor para bajarlo más */
+  }
+
+  /* puedes también reducir su altura */
+  .logo-navbar {
+    max-height: 60px; /* más pequeño para móvil */
+    transform: none !important; /* evita transformaciones que lo desplacen */
+  }
+
+  /* elimina o ajusta el borde de la navbar en móvil */
+  .navbar {
+    border-bottom: none !important;
+  }
+}
+
+
+
+
+
  
   </style>
 </head>
@@ -344,7 +409,9 @@ footer{ color:#6b7b89; font-size:.92rem; border-top:1px solid var(--border); pad
   <div class="container  d-flex justify-content-between align-items-center">
     <!-- Logo fuera del span -->
     <a class="navbar-brand" href="#">
-      <img src="AldaNovaLogo.png" alt="Logo AldaNova" class="logo-navbar">
+    <div class="logo-crop">
+      <img src="AldaNovaLogo_con_recuadro.png" alt="Logo AldaNova" class="logo-navbar">
+      </div>
     </a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navlinks" aria-controls="navlinks" aria-expanded="false" aria-label="Menú">
