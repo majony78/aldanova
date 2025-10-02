@@ -265,6 +265,75 @@ footer{ color:#6b7b89; font-size:.92rem; border-top:1px solid var(--border); pad
   margin-top: 0 !important;
   padding-top: 24px; /* o 16px o 0 */
 }
+
+.extra-slot {
+  width: 100%;
+  height: 180px;       /* ajusta la altura visible */
+  overflow: hidden;    /* oculta lo que se salga */
+  border-radius: 16px; /* opcional: bordes redondeados */
+  background: transparent;
+}
+
+.extra-slot .extra-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* recorta para llenar */
+  object-position: center;   /* mantiene centrado */
+  display: block;
+}
+
+
+/* Overlay imagenes */
+.overlay-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay-box img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(26,40,54,0.75); /* var(--brand) oscuro translúcido */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 1rem;
+  border-radius: 16px; /* igual que .img-slot */
+}
+
+.overlay-box:hover .overlay-text {
+  opacity: 1;
+}
+
+@keyframes hologram {
+  0%   {transform: rotateY(0deg) scale(1);}
+  50%  {transform: rotateY(180deg) scale(1.05);}
+  100% {transform: rotateY(360deg) scale(1);}
+}
+
+.extra-slot .extra-img {
+  animation: none;
+  transition: box-shadow .4s ease;
+}
+
+.extra-slot:hover .extra-img {
+  animation: hologram 2s linear infinite;
+  box-shadow: 0 0 30px rgba(59,163,255,.5);
+}
+
  
   </style>
 </head>
@@ -315,33 +384,59 @@ footer{ color:#6b7b89; font-size:.92rem; border-top:1px solid var(--border); pad
             <li>✔︎ Arquitectura modular, sin ataduras</li>
           </ul>
         </div>
-       <div class="col-lg-6 mt-5 mt-lg-0">
+   <div class="col-lg-6 mt-5 mt-lg-0">
   <video autoplay muted loop playsinline class="w-100 rounded" style="min-height:360px;object-fit:cover;">
     <source src="aldanova_video_final.mp4" type="video/mp4">
     Tu navegador no soporta vídeo HTML5.
   </video>
+
+  <!-- NUEVO DIV PARA IMAGEN AISLADA -->
+  <div class="extra-slot mt-4">
+    <img src="logos_juntos_con_recuadro.png" alt="Imagen recortada" class="extra-img">
+  </div>
 </div>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- HIGHLIGHTS VISUALES -->
-  <section class="section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 mb-4"><div class="img-slot">
-          <img src="image_aldanova7.png" alt="Imagen 1 — Moderna" width="800" height="600" class="img-fluid">
-        </div></div>
-        <div class="col-md-4 mb-4"><div class="img-slot">
-          <img src="image_aldanova4.png" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
-        </div></div>
-        <div class="col-md-4 mb-4"><div class="img-slot">
-          <img src="image_aldanova3.png" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid"> 
-        </div></div>
+<!-- HIGHLIGHTS VISUALES -->
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="img-slot overlay-box">
+          <img src="image_aldanova7.png" alt="Integración ERP" class="img-fluid">
+          <div class="overlay-text">
+            <h5>Integración ERP</h5>
+            <p>Conecta tus procesos y datos en un solo lugar.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="img-slot overlay-box">
+          <img src="image_aldanova4.png" alt="Automatización n8n" class="img-fluid">
+          <div class="overlay-text">
+            <h5>Automatizaciones</h5>
+            <p>Workflows en n8n con control y trazabilidad.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="img-slot overlay-box">
+          <img src="image_aldanova3.png" alt="Chat Inteligente" class="img-fluid">
+          <div class="overlay-text">
+            <h5>Chat conectado</h5>
+            <p>Consulta KPIs, lanza tareas y obtén respuestas en tiempo real.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- CÓMO FUNCIONA -->
   <section class="section" id="como-funciona">
@@ -400,7 +495,7 @@ footer{ color:#6b7b89; font-size:.92rem; border-top:1px solid var(--border); pad
         <span class="integrations-badge">HubSpot</span>
         <span class="integrations-badge">Zoho</span>
         <span class="integrations-badge">PostgreSQL</span>
-        <span class="integrations-badge">MySQL</span>
+        <span class="integrations-badge">Microsoft</span>
         <span class="integrations-badge">MongoDB</span>
         <span class="integrations-badge">REST / GraphQL</span>
         <span class="integrations-badge">n8n</span>
@@ -476,11 +571,13 @@ footer{ color:#6b7b89; font-size:.92rem; border-top:1px solid var(--border); pad
   <!-- GALERÍA -->
   <section class="section" id="galeria">
     <div class="container">
-      <h2 class="section-title text-center">Galería</h2>
-      <p class="section-sub text-center">Capturas, Mockups, Equipo</p>
+      <h2 class="section-title text-center">Listo para habla con tus sistemas </h2>
+     <p class="section-sub text-center">
+  Personalizable • Trazabilidad • Intuitivo • Seguro • Escalable • Integración sencilla • Automatizable
+</p>
       <div class="row">
         <div class="col-md-6 mb-4"><div class="img-slot slot-tall">
-           <img src="image_aldanova5.png" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
+           <img src="imagen1_con_logos1.png" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
         </div></div>
         <div class="col-md-6 mb-4"><div class="img-slot slot-tall">
            <img src="image_aldanova6.png" alt="Imagen 2 — Moderna" width="800" height="600" class="img-fluid">
