@@ -90,6 +90,12 @@ body{
 .cta{ background:#FBFDFF; border-top:1px solid var(--border); }
 .cta .card{ border:1px solid var(--border); border-radius:18px; }
 
+/* === Naranja sólo para la sección contacto === */
+#contacto {
+ background: linear-gradient(to bottom, #E6E6E6, #ACB3BD) !important;
+  border-top: none !important;
+}
+
 /* separación de botones CTA */
 @media (min-width: 768px) {
   .cta .row > .col-md-5 {
@@ -143,7 +149,17 @@ body{
 }
 
 
-footer{ color:#6b7b89; font-size:.92rem; border-top:1px solid var(--border); padding:28px 0; }
+footer {
+  background-color: #1A2836 !important; /* azul oscuro o el color que quieras */
+  color: #fff !important;               /* texto blanco */
+  font-size: .92rem;
+  border-top: none;                     /* opcional: quita borde */
+  padding: 28px 0;
+  position: relative;
+  z-index: 1;                           /* que quede por encima del pseudo-elemento */
+}
+
+
 
 .brand-icon img {
   max-height: 32px; 
@@ -607,7 +623,7 @@ body::after {
 }
 
 /* Asegura que las secciones tengan fondo transparente para ver el degradado */
-.section, .hero, .cta, footer {
+.section, .hero, .cta{
   background: transparent;
 }
 
