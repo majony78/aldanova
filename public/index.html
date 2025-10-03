@@ -1119,20 +1119,21 @@ html, body {
 
 	  document.documentElement.style.setProperty('--scroll-text', `rgb(${r},${g},${b})`);
 	}); 
- 
+  
+  
+ /*
   window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+	  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+	  const trigger = 3200; // ajusta cuándo quieres que cambie
 
-    // empieza a cambiar a partir de 900px (ajústalo a gusto)
-    const trigger = 1400;
+	  if(scrollTop > trigger){
+	    document.body.classList.add('scrolled-dark');   // letras blancas
+	  } else {
+	    document.body.classList.remove('scrolled-dark'); // letras negras
+	  }
+	});
 
-    if(scrollTop > trigger){
-      document.body.classList.add('scrolled-dark');
-    } else {
-      document.body.classList.remove('scrolled-dark');
-    }
-  });
-
+*/
 
   
 //Activa las animaciones cuando el elemento entra en pantalla
