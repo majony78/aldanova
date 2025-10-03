@@ -25,6 +25,8 @@ body{
   background:#fff;
 }
 
+
+
 /* NAVBAR */
 .navbar{ border-bottom:1px solid var(--border); }
 .navbar .nav-link{ color:var(--brand); font-weight:600;  transition: transform 0.2s ease, color 0.2s ease; }
@@ -709,8 +711,46 @@ html, body {
   transform: translateY(0);
 }
  
+
+.img-slot-logos {
+   border-radius: 15px; /* el valor que quieras */
+  overflow: hidden;    /* para que la imagen no sobresalga */
+} 
  
- 
+
+/*modal contacto*/
+
+/* Modal personalizado */
+.modal-content {
+  background-color: var(--brand); /* azul oscuro */
+  color: #fff;                   /* texto blanco */
+  border-radius: 16px;           /* esquinas redondeadas */
+  border: none;                  /* sin borde */
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(255,255,255,0.2); /* línea clara */
+}
+
+.modal-title {
+  color: #fff; /* título blanco */
+  font-weight: 700;
+}
+
+.modal-body a {
+  color: var(--accent); /* link azul clarito */
+  text-decoration: underline;
+}
+
+.modal-body a:hover {
+  color: #fff; /* link blanco al pasar el ratón */
+}
+
+.modal-body ul {
+  margin-bottom: 0;
+}
+
+
  
   </style>
 </head>
@@ -735,7 +775,7 @@ html, body {
           <li class="nav-item"><a class="nav-link" href="#como-funciona">Cómo funciona</a></li>
           <li class="nav-item"><a class="nav-link" href="#integraciones">Integraciones</a></li>
           <li class="nav-item"><a class="nav-link" href="#casos">Casos de uso</a></li>
-          <li class="nav-item"><a class="btn btn-sm btn-primary ml-lg-3 btn-solicitar" href="#contacto">Solicitar demo</a></li>
+          <li class="nav-item"><a class="btn btn-sm btn-primary ml-lg-3 btn-solicitar" data-toggle="modal" data-target="#solicitarDemoModal">Solicitar demo</a></li>
         </ul>
       </div>
     </div>
@@ -905,8 +945,15 @@ html, body {
         <div class="col-md-3 mb-3"><div class="img-slot img-slot-n8n">
            <img src="n8n.png" alt="Logo n8n" width="800" height="600" class="img-fluid">
         </div></div>
+      <div class="col-6 offset-3 text-center mb-3 reveal"><div class="img-slot img-slot-logos">
+           <img src="imagen_logos4.png" alt="Logos juntos" width="800" height="600" class="img-fluid">
+        </div></div>
       </div>
     </div>
+
+
+    
+    
   </section>
 
   <!-- CASOS DE USO -->
@@ -1035,13 +1082,45 @@ html, body {
 </p>
           </div>
           <div class="col-md-5 mt-3 mt-md-0 text-md-right">
-            <a href="#" class="btn btn-primary btn-lg">Solicitar demo</a>
+           <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#solicitarDemoModal">Solicitar demo</a>
+
             <a href="#" class="btn btn-outline btn-lg ml-2">Ver documentación</a>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+
+<!-- MODAL SOLICITAR DEMO -->
+<div class="modal fade" id="solicitarDemoModal" tabindex="-1" role="dialog" aria-labelledby="solicitarDemoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="solicitarDemoLabel">Solicitar demo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-left">
+        <p>Para solicitar una demo, ponte en contacto con nosotros:</p>
+        <ul class="list-unstyled">
+          <li><strong>Email:</strong> <a href="mailto:info@aldanova.es">info@aldanova.es</a></li>
+          <li><strong>Teléfono:</strong> +34 600 123 456</li>
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 
   <footer>
     <div class="container d-flex flex-wrap justify-content-between align-items-center">
